@@ -1,0 +1,37 @@
+1、mysqldump到处数据库
+   mysqldump -u root -p zhengzhouEnomatic > /home/shan/桌面/db/db.sql
+
+2、Git 保存用户名和密码
+   git config credential.helper store
+
+3、开启nginx容器
+   docker run -d --name wgb-admin -p 8088:8088 -v /home/chenjunshan/project/vuePro/wgb-admin/default.conf:/etc/nginx/conf.d/default.conf -v /home/chenjunshan/project/vuePro/wgb-admin/dist:/usr/share/nginx/html nginx:latest
+
+4、查看端口
+   netstat -anp | grep 80
+5、启动jar
+   nohup ./start.sh &
+6、docker运行nginx
+docker run -d --name itchenqi -p 8088:80 -v /home/chenjunshan/vue/itchenqi/default.conf:/etc/nginx/conf.d/default.conf -v /home/chenjunshan/vue/itchenqi/dist:/usr/share/nginx/html nginx:latest
+7、nginx default.conf配置内容
+server {
+    listen       80;
+    server_name  localhost;
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+    location ^~/ajaxurl/ {        
+        rewrite ^/ajaxurl/(.*)$ /$1 break;        
+        proxy_set_header   Host             $host;        
+        proxy_set_header   x-forwarded-for  $remote_addr;        
+        proxy_set_header   X-Real-IP        $remote_addr;        
+        proxy_pass http://120.77.177.71:80;
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+
+
