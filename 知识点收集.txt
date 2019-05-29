@@ -14,3 +14,13 @@
 docker run -d --name itchenqi -p 8088:80 -v /home/chenjunshan/vue/itchenqi/default.conf:/etc/nginx/conf.d/default.conf -v /home/chenjunshan/vue/itchenqi/dist:/usr/share/nginx/html nginx:latest
 
 6、nginx default.conf配置内容见nginx目录default.conf文件
+
+7、centos中释放缓存的方法
+https://blog.csdn.net/reblue520/article/details/80553352
+
+8、利用Docker来搭建分布式文件系统FastDfs
+https://www.cnblogs.com/weifeng-888/p/10892835.html
+删除掉fdfs_storaged.pid才能运行storage (rm -rf /var/fdfs/storage/data/fdfs_storaged.pid)
+
+9、spring boot配置FastDfs
+https://blog.csdn.net/u013792404/article/details/90546809
